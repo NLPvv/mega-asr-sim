@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Data & outputs
+out/
+*.wav
+*.mp3
+*.flac
+*.jsonl
+!example_manifest.jsonl
+
+# OS
+.DS_Store
