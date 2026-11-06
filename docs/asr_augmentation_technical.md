@@ -29,8 +29,8 @@ out/<split>/                          # 增强音频、manifest 和错误记录
 
 $$
 \begin{aligned}
-\operatorname{RMS}(z) &= \sqrt{\frac{1}{T}\sum_{t=1}^{T}z_t^2} \\
-\alpha &= \frac{\operatorname{RMS}(x)}{\operatorname{RMS}(n)\,10^{s/20}} \\
+\mathrm{RMS}(z) &= \sqrt{\frac{1}{T}\sum_{t=1}^{T}z_t^2} \\
+\alpha &= \frac{\mathrm{RMS}(x)}{\mathrm{RMS}(n)\,10^{s/20}} \\
 y_t &= x_t + \alpha n_t
 \end{aligned}
 $$
@@ -42,7 +42,7 @@ $$
 | $t$ | 采样点的位置，从 1 到 $T$ |
 | $T$ | 总采样点数，例如 1 秒、16 kHz 音频有 16000 个点 |
 | $z$、$z_t$ | 任意一段波形及其第 $t$ 个采样值；$z$ 可以是语音 $x$ 或噪声 $n$ |
-| $\operatorname{RMS}(z)$ | 波形的均方根幅值，即逐点平方、求平均、再开方 |
+| $\mathrm{RMS}(z)$ | 波形的均方根幅值，即逐点平方、求平均、再开方 |
 | $x_t$ | 当前加噪步骤输入波形的第 $t$ 个采样值，可能已经过其他增强 |
 | $n_t$ | 长度对齐后、尚未缩放的噪声采样值 |
 | $s$ | 目标信噪比，单位 dB；越大表示语音相对越强 |
