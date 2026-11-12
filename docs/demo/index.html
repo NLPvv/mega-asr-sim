@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASR 声学增强试听</title>
+<style>
+body { max-width: 50rem; margin: 2rem auto; padding: 0 1rem; font: 1rem/1.6 system-ui, sans-serif; color-scheme: light dark; }
+ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); gap: 1rem 1.5rem; padding: 0; list-style: none; }
+audio { display: block; width: 100%; margin-top: .25rem; }
+</style>
+</head>
+<body>
+<h1>同一句普通话的增强试听</h1>
+<p>16 kHz 单声道 · 7.05 秒 · 严重度 m=0.5 · <a href="parameters.json">实际参数</a></p>
+<ul>
+<li><span>原声</span><audio id="clean" aria-label="原声" controls preload="none" src="clean.wav"></audio></li>
+<li><span>仅低通 · 1.5 kHz</span><audio id="lowpass" aria-label="仅低通 · 1.5 kHz" controls preload="none" src="lowpass.wav"></audio></li>
+<li><span>仅高通 · 1.5 kHz</span><audio id="highpass" aria-label="仅高通 · 1.5 kHz" controls preload="none" src="highpass.wav"></audio></li>
+<li><span>噪声</span><audio id="noise" aria-label="噪声" controls preload="none" src="noise.wav"></audio></li>
+<li><span>远场</span><audio id="far_field" aria-label="远场" controls preload="none" src="far_field.wav"></audio></li>
+<li><span>遮挡</span><audio id="obstructed" aria-label="遮挡" controls preload="none" src="obstructed.wav"></audio></li>
+<li><span>回声混响</span><audio id="echo_reverb" aria-label="回声混响" controls preload="none" src="echo_reverb.wav"></audio></li>
+<li><span>录音退化</span><audio id="recording" aria-label="录音退化" controls preload="none" src="recording.wav"></audio></li>
+<li><span>失真</span><audio id="distortion" aria-label="失真" controls preload="none" src="distortion.wav"></audio></li>
+<li><span>丢帧</span><audio id="dropout" aria-label="丢帧" controls preload="none" src="dropout.wav"></audio></li>
+</ul>
+<p>原声摘自 <a href="https://commons.wikimedia.org/wiki/File:Introduction_In_Chinese.ogg">Germartin1 的普通话录音（CC0）</a>。加噪示例使用合成底噪。</p>
+<script>
+document.addEventListener("play", (event) => {
+  if (event.target.tagName === "AUDIO") {
+    document.querySelectorAll("audio").forEach((player) => {
+      if (player !== event.target) player.pause();
+    });
+  }
+}, true);
+</script>
+</body>
+</html>

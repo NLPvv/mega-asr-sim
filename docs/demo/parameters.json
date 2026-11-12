@@ -1,0 +1,276 @@
+{
+  "simulator_revision": "b79999373a1526a4f9dd6d82463aef3f831b8fbc",
+  "source": {
+    "title": "Introduction In Chinese.ogg",
+    "author": "Germartin1",
+    "url": "https://commons.wikimedia.org/wiki/File:Introduction_In_Chinese.ogg",
+    "license": "CC0-1.0",
+    "clip_seconds": [
+      1.35,
+      7.75
+    ],
+    "added_tail_seconds": 0.65,
+    "end_fades_ms": 10,
+    "input_gain": 1.0
+  },
+  "noise_example_source": {
+    "type": "synthetic fan-like noise",
+    "seed": 7,
+    "white_noise_lowpass_hz": 900,
+    "added_tone_hz": 100
+  },
+  "sample_rate": 16000,
+  "frames": 112800,
+  "severity": 0.5,
+  "seed": 2,
+  "examples": [
+    {
+      "audio": "clean.wav",
+      "label": "原声",
+      "primitive_chain": []
+    },
+    {
+      "audio": "lowpass.wav",
+      "label": "仅低通 · 1.5 kHz",
+      "primitive_chain": [
+        {
+          "primitive": "apply_filter",
+          "params": {
+            "cutoff_hz": 1500,
+            "filter_type": "lowpass",
+            "repeat": 1,
+            "wet": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "audio": "highpass.wav",
+      "label": "仅高通 · 1.5 kHz",
+      "primitive_chain": [
+        {
+          "primitive": "apply_filter",
+          "params": {
+            "cutoff_hz": 1500,
+            "filter_type": "highpass",
+            "repeat": 1,
+            "wet": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "audio": "noise.wav",
+      "label": "噪声",
+      "primitive_chain": [
+        {
+          "primitive": "add_noise",
+          "params": {
+            "noise_db": 2.5,
+            "wet": 1.0
+          }
+        },
+        {
+          "primitive": "change_volume",
+          "params": {
+            "target_lufs": -23.0
+          }
+        }
+      ]
+    },
+    {
+      "audio": "far_field.wav",
+      "label": "远场",
+      "primitive_chain": [
+        {
+          "primitive": "add_reverb",
+          "params": {
+            "room_size": 0.5,
+            "damping": 0.7,
+            "wet_level": 0.45,
+            "dry_level": 0.5
+          }
+        },
+        {
+          "primitive": "apply_filter",
+          "params": {
+            "cutoff_hz": 4000.0,
+            "filter_type": "lowpass",
+            "repeat": 3,
+            "wet": 1.0
+          }
+        },
+        {
+          "primitive": "change_volume",
+          "params": {
+            "target_lufs": -32.5
+          }
+        }
+      ]
+    },
+    {
+      "audio": "obstructed.wav",
+      "label": "遮挡",
+      "primitive_chain": [
+        {
+          "primitive": "apply_filter",
+          "params": {
+            "cutoff_hz": 1750.0,
+            "repeat": 3,
+            "filter_type": "lowpass",
+            "wet": 0.9
+          }
+        },
+        {
+          "primitive": "add_reverb",
+          "params": {
+            "wet_level": 0.6,
+            "room_size": 0.4,
+            "damping": 0.9,
+            "dry_level": 0.4
+          }
+        },
+        {
+          "primitive": "change_volume",
+          "params": {
+            "target_lufs": -20.0
+          }
+        }
+      ]
+    },
+    {
+      "audio": "echo_reverb.wav",
+      "label": "回声混响",
+      "primitive_chain": [
+        {
+          "primitive": "add_reverb",
+          "params": {
+            "room_size": 0.875,
+            "wet_level": 0.7,
+            "damping": 0.5,
+            "dry_level": 0.4
+          }
+        },
+        {
+          "primitive": "apply_filter",
+          "params": {
+            "cutoff_hz": 200.0,
+            "filter_type": "highpass",
+            "repeat": 1,
+            "wet": 1.0
+          }
+        },
+        {
+          "primitive": "add_echo",
+          "params": {
+            "delay_seconds": 0.2,
+            "feedback": 0.4,
+            "mix": 0.25
+          }
+        },
+        {
+          "primitive": "change_volume",
+          "params": {
+            "target_lufs": -26.5
+          }
+        }
+      ]
+    },
+    {
+      "audio": "recording.wav",
+      "label": "录音退化",
+      "primitive_chain": [
+        {
+          "primitive": "add_resample",
+          "params": {
+            "prob": 0.5,
+            "target_sr": 8000,
+            "wet": 1.0,
+            "threshold": 0.4
+          }
+        },
+        {
+          "primitive": "add_noise",
+          "params": {
+            "noise_db": 2.5,
+            "use_white_noise": true,
+            "wet": 1.0
+          }
+        },
+        {
+          "primitive": "apply_filter",
+          "params": {
+            "cutoff_hz": 500.0,
+            "repeat": 5,
+            "filter_type": "highpass",
+            "wet": 1.0
+          }
+        },
+        {
+          "primitive": "apply_filter",
+          "params": {
+            "cutoff_hz": 4000.0,
+            "repeat": 5,
+            "filter_type": "lowpass",
+            "wet": 1.0
+          }
+        },
+        {
+          "primitive": "change_volume",
+          "params": {
+            "target_lufs": -23.0
+          }
+        }
+      ]
+    },
+    {
+      "audio": "distortion.wav",
+      "label": "失真",
+      "primitive_chain": [
+        {
+          "primitive": "add_distortion",
+          "params": {
+            "drive_db": 40.0,
+            "wet": 1.0
+          }
+        },
+        {
+          "primitive": "apply_filter",
+          "params": {
+            "cutoff_hz": 4400.0,
+            "filter_type": "lowpass",
+            "repeat": 1,
+            "wet": 1.0
+          }
+        },
+        {
+          "primitive": "change_volume",
+          "params": {
+            "target_lufs": -32.5
+          }
+        }
+      ]
+    },
+    {
+      "audio": "dropout.wav",
+      "label": "丢帧",
+      "primitive_chain": [
+        {
+          "primitive": "add_stutter_replace",
+          "params": {
+            "stutter_prob": 0.175,
+            "max_repeats": 3,
+            "repeat_prob": 0.7,
+            "frame_ms": 20
+          }
+        },
+        {
+          "primitive": "change_volume",
+          "params": {
+            "target_lufs": -23.0
+          }
+        }
+      ]
+    }
+  ]
+}
