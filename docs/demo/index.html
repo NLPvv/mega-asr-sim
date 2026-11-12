@@ -8,11 +8,12 @@
 body { max-width: 50rem; margin: 2rem auto; padding: 0 1rem; font: 1rem/1.6 system-ui, sans-serif; color-scheme: light dark; }
 ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); gap: 1rem 1.5rem; padding: 0; list-style: none; }
 audio { display: block; width: 100%; margin-top: .25rem; }
+audio:target { outline: 2px solid currentColor; outline-offset: 2px; }
 </style>
 </head>
 <body>
 <h1>同一句普通话的增强试听</h1>
-<p>16 kHz 单声道 · 7.05 秒 · 严重度 m=0.5 · <a href="parameters.json">实际参数</a></p>
+<p>16 kHz 单声道 · 7.05 秒 · 严重度 m=0.5 · <a href="parameters.json">实际参数</a> · <a href="https://github.com/NLPvv/mega-asr-sim/blob/main/docs/asr_augmentation_technical.md">增强原理与配置</a></p>
 <ul>
 <li><span>原声</span><audio id="clean" aria-label="原声" controls preload="none" src="clean.wav"></audio></li>
 <li><span>仅低通 · 1.5 kHz</span><audio id="lowpass" aria-label="仅低通 · 1.5 kHz" controls preload="none" src="lowpass.wav"></audio></li>

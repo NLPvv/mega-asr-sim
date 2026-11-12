@@ -7,6 +7,8 @@ It turns clean speech into acoustically degraded training data covering **7 atom
 
 > 中文简介：本仓库复现 Mega-ASR 论文附录 C 的语音退化仿真管道：8 种信号级 primitive 算子 → 7 种原子声学效应 → 54 种复合场景，支持全局严重度控制（Linear 分布），输入干净语音 manifest 即可批量生成带标注的退化训练数据。详见下文。
 
+**[在线播放示例](https://nlpvv.github.io/mega-asr-sim/demo/)** · [中文技术说明](docs/asr_augmentation_technical.md)
+
 ## Features
 
 - **8 primitive effects** (paper Table 14): additive noise, echo delay, reverberation, nonlinear distortion, resampling, spectral filtering, loudness transformation (LUFS), frame-level stutter
